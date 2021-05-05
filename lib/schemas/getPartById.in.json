@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "partId": {
+            "required": true,
+            "type": "integer"
+        }
+    }
+}

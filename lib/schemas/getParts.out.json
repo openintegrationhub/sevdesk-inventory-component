@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "partNumber": {
+            "required": false,
+            "type": "string"
+        },
+        "name": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
