@@ -4,7 +4,7 @@
 
 [![Generic badge](https://img.shields.io/badge/Status-NotTested!-lightgrey.svg)](https://shields.io/)
 
-A generated OIH connector for the sevDesk Inventory API API (version 2.0.0).
+A generated OIH connector for the sevDesk Inventory API (version 2.0.0).
 
 Generated from: https://my.sevdesk.de/api/v1<br/>
 Generated at: 2021-04-22T22:43:35+02:00
