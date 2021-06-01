@@ -2,7 +2,7 @@
     "title": "sevDesk Inventory API",
     "description": "\r\n# General information\r\nWelcome to our Inventory API!<br>\r\nYou can use it to manage the inventory in your sevDesk account.\r\n\r\n# Cross-Origin Resource Sharing\r\nThis API features Cross-Origin Resource Sharing (CORS).<br>\r\nIt enables cross-domain communication from the browser.<br>\r\nAll responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.\r\n\r\n# Embedding resources\r\nWhen retrieving resources by using this API, you might encounter nested resources in the resources you requested.<br>\r\nFor example, an invoice always contains a contact, of which you can see the ID and the object name.<br>\r\nThis API gives you the possibility to embed these resources completely into the resources you originally requested.<br>\r\nTaking our invoice example, this would mean, that you would not only see the ID and object name of a contact, but rather the complete contact resource.\r\n\r\nTo embed resources, all you need to do is to add the query parameter 'embed' to your GET request.<br>\r\nAs values, you can provide the name of the nested resource.<br>\r\nMultiple nested resources are also possible by providing multiple names, separated by a comma.\r\n",
     "docsUrl": "https://5677.extern.sevdesk.dev/apiOverview/index.html#/",
-    "url": "https://my.sevdesk.de/api/v1",
+    "url": "https://raw.githubusercontent.com/openintegrationhub/sevdesk-inventory-component/master/lib/spec.json",
     "envVars": {},
     "credentials": {
         "fields": {
@@ -28,16 +28,8 @@
         }
     },
     "triggers": {
-        "startFlow": {
-            "main": "./lib/triggers/startFlow.js",
-            "type": "polling",
-            "title": "Start Flow",
-            "fields": {}
-        }
-    },
-    "actions": {
         "getParts": {
-            "main": "./lib/actions/getParts.js",
+            "main": "./lib/triggers/getParts.js",
             "title": "Retrieve parts",
             "description": "Retrieve all parts in your sevDesk inventory according to the applied filters.",
             "fields": {
@@ -51,6 +43,23 @@
                 "out": "./lib/schemas/getParts.out.json"
             }
         },
+        "partGetStock": {
+            "main": "./lib/triggers/partGetStock.js",
+            "title": "Get stock of a part",
+            "description": "Returns the current stock amount of the given part.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/partGetStock.in.json",
+                "out": "./lib/schemas/partGetStock.out.json"
+            }
+        }
+    },
+    "actions": {
         "createPart": {
             "main": "./lib/actions/createPart.js",
             "title": "Create a new part",
@@ -94,21 +103,6 @@
             "metadata": {
                 "in": "./lib/schemas/updatePart.in.json",
                 "out": "./lib/schemas/updatePart.out.json"
-            }
-        },
-        "partGetStock": {
-            "main": "./lib/actions/partGetStock.js",
-            "title": "Get stock of a part",
-            "description": "Returns the current stock amount of the given part.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "metadata": {
-                "in": "./lib/schemas/partGetStock.in.json",
-                "out": "./lib/schemas/partGetStock.out.json"
             }
         }
     }
