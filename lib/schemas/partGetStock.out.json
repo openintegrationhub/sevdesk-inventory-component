@@ -1,9 +1,9 @@
 {
-    "type": "object",
     "properties": {
         "objects": {
             "description": "Stock amount",
             "type": "integer"
         }
-    }
+    },
+    "type": "object"
 }
