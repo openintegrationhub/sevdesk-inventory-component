@@ -28,8 +28,13 @@
         }
     },
     "triggers": {
+        "lookup": {
+            "main": "./lib/lookups/lookup.js",
+            "title": "Function to run a lookup",
+            "description": "Function to call an internal trigger or action"
+        },
         "getParts": {
-            "main": "./lib/triggers/getParts.js",
+            "main": "./lib/triggers/trigger.js",
             "title": "Retrieve parts",
             "description": "Retrieve all parts in your sevDesk inventory according to the applied filters.",
             "fields": {
@@ -38,13 +43,17 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/Part",
+                "method": "get"
+            },
             "metadata": {
                 "in": "./lib/schemas/getParts.in.json",
                 "out": "./lib/schemas/getParts.out.json"
             }
         },
         "partGetStock": {
-            "main": "./lib/triggers/partGetStock.js",
+            "main": "./lib/triggers/trigger.js",
             "title": "Get stock of a part",
             "description": "Returns the current stock amount of the given part.",
             "fields": {
@@ -52,6 +61,10 @@
                     "viewClass": "CheckBoxView",
                     "label": "Debug this step (log more data)"
                 }
+            },
+            "callParams": {
+                "pathName": "/Part/{partId}/getStock",
+                "method": "get"
             },
             "metadata": {
                 "in": "./lib/schemas/partGetStock.in.json",
@@ -61,7 +74,7 @@
     },
     "actions": {
         "createPart": {
-            "main": "./lib/actions/createPart.js",
+            "main": "./lib/actions/action.js",
             "title": "Create a new part",
             "description": "Creates a part in your sevDesk inventory.",
             "fields": {
@@ -70,28 +83,18 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/Part",
+                "method": "post",
+                "requestContentType": "json"
+            },
             "metadata": {
                 "in": "./lib/schemas/createPart.in.json",
                 "out": "./lib/schemas/createPart.out.json"
             }
         },
-        "getPartById": {
-            "main": "./lib/actions/getPartById.js",
-            "title": "Find part by ID",
-            "description": "Returns a single part",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "metadata": {
-                "in": "./lib/schemas/getPartById.in.json",
-                "out": "./lib/schemas/getPartById.out.json"
-            }
-        },
         "updatePart": {
-            "main": "./lib/actions/updatePart.js",
+            "main": "./lib/actions/action.js",
             "title": "Update an existing part",
             "description": "Update a part",
             "fields": {
@@ -100,9 +103,33 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/Part/{partId}",
+                "method": "put",
+                "requestContentType": "json"
+            },
             "metadata": {
                 "in": "./lib/schemas/updatePart.in.json",
                 "out": "./lib/schemas/updatePart.out.json"
+            }
+        },
+        "getPartById": {
+            "main": "./lib/actions/action.js",
+            "title": "Find part by ID",
+            "description": "Returns a single part",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "callParams": {
+                "pathName": "/Part/{partId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPartById.in.json",
+                "out": "./lib/schemas/getPartById.out.json"
             }
         }
     }
