@@ -37,12 +37,6 @@
             "main": "./lib/triggers/trigger.js",
             "title": "Retrieve parts",
             "description": "Retrieve all parts in your sevDesk inventory according to the applied filters.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Part",
                 "method": "get"
@@ -56,12 +50,6 @@
             "main": "./lib/triggers/trigger.js",
             "title": "Get stock of a part",
             "description": "Returns the current stock amount of the given part.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Part/{partId}/getStock",
                 "method": "get"
@@ -77,12 +65,6 @@
             "main": "./lib/actions/action.js",
             "title": "Create a new part",
             "description": "Creates a part in your sevDesk inventory.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Part",
                 "method": "post",
@@ -93,16 +75,23 @@
                 "out": "./lib/schemas/createPart.out.json"
             }
         },
+        "getPartById": {
+            "main": "./lib/actions/action.js",
+            "title": "Find part by ID",
+            "description": "Returns a single part",
+            "callParams": {
+                "pathName": "/Part/{partId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPartById.in.json",
+                "out": "./lib/schemas/getPartById.out.json"
+            }
+        },
         "updatePart": {
             "main": "./lib/actions/action.js",
             "title": "Update an existing part",
             "description": "Update a part",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Part/{partId}",
                 "method": "put",
@@ -111,25 +100,6 @@
             "metadata": {
                 "in": "./lib/schemas/updatePart.in.json",
                 "out": "./lib/schemas/updatePart.out.json"
-            }
-        },
-        "getPartById": {
-            "main": "./lib/actions/action.js",
-            "title": "Find part by ID",
-            "description": "Returns a single part",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "callParams": {
-                "pathName": "/Part/{partId}",
-                "method": "get"
-            },
-            "metadata": {
-                "in": "./lib/schemas/getPartById.in.json",
-                "out": "./lib/schemas/getPartById.out.json"
             }
         }
     }
