@@ -61,6 +61,20 @@
         }
     },
     "actions": {
+        "updatePart": {
+            "main": "./lib/actions/action.js",
+            "title": "Update an existing part",
+            "description": "Update a part",
+            "callParams": {
+                "pathName": "/Part/{partId}",
+                "method": "put",
+                "requestContentType": "json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updatePart.in.json",
+                "out": "./lib/schemas/updatePart.out.json"
+            }
+        },
         "createPart": {
             "main": "./lib/actions/action.js",
             "title": "Create a new part",
@@ -86,20 +100,6 @@
             "metadata": {
                 "in": "./lib/schemas/getPartById.in.json",
                 "out": "./lib/schemas/getPartById.out.json"
-            }
-        },
-        "updatePart": {
-            "main": "./lib/actions/action.js",
-            "title": "Update an existing part",
-            "description": "Update a part",
-            "callParams": {
-                "pathName": "/Part/{partId}",
-                "method": "put",
-                "requestContentType": "json"
-            },
-            "metadata": {
-                "in": "./lib/schemas/updatePart.in.json",
-                "out": "./lib/schemas/updatePart.out.json"
             }
         }
     }
